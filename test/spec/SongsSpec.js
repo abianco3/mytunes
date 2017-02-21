@@ -37,6 +37,7 @@ describe('Songs', function() {
 
     it('should populate itself with the data returned from the Parse server', function() {
       songs = new Songs();
+      console.log(requests);
       requests[0].respond(200, { 'Content-Type': 'application/json' }, fakeResponse);
       expect(songs).to.have.length(2);
       expect(songs.at(0).get('title')).to.equal('Never Gonna Mock You Up');
