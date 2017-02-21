@@ -30,5 +30,36 @@ describe('LibraryEntryView', function() {
 
     SongModel.prototype.enqueue.restore();
   });
+  it('does not queue duplicates', function() {
+    
+    library = new Songs([
+      {
+        url: 'mp3s/08 4 Page Letter.mp3',
+        title: '4 Page Letter',
+        artist: 'Aaliyah'
+      },
+      {
+        url: 'mp3s/11 We Need A Resolution.mp3',
+        title: 'We Need A Resolution',
+        artist: 'Aaliyah'
+      },
+      {
+        url: 'mp3s/A Third Song.mp3',
+        title: 'The Third Song',
+        artist: 'Aaliyah'
+      }
+    ]);
+    // playerView is created in AppView initialize
+    // access with appView.playerView
+    appView = new AppView({model: new AppModel({library: library})});
+    var songQueue = appView.model.get('songQueue');
+    // Click song once
+    var libraryView = appView.libraryView;
+    console.log(libraryView);
+    libraryView.$el.children()[1].children[0].click();
+    // Click song again
+    libraryView.$el.children()[1].children[0].click();
+    expect(songQueue.length).to.equal(1);
+  });
 
 });
