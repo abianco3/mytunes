@@ -58,4 +58,17 @@ describe('LibraryView', function() {
       expect(view.render).to.have.been.calledTwice;
     });
   });
+
+  describe('when updating library', function() {
+    it('it should re-render the library view', function() {
+      var FakeLibraryView = LibraryView.extend({ render: sinon.spy() });
+      fakeSongs.add({
+        artist: 'NapChat',
+        title: 'Sleepy Time',
+        url: 'fake/url'
+      });
+      
+      expect(view.render).to.have.been.calledTwice;
+    });
+  });
 });

@@ -28,7 +28,9 @@
         // set up model objects
         // var library = new Songs(songData);
         var library = new Songs();
+        //library.fetch();
         console.log(library);
+        
         var app = new AppModel({library: library});
 
         // build a view for the top level of the whole app
