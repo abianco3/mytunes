@@ -3,7 +3,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
 
-  template: _.template('<td><%= playcount %></td><td>(<%= artist %>)</td><td><%= title %></td>'),
+  template: _.template('<td><%= playcount %></td><td><img src=<%= artwork_url %> width="40"></td><td>(<%= artist %>)</td><td><%= title %></td>'),
   
   events: {
     'click': function() {

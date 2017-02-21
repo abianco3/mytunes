@@ -8,5 +8,13 @@ var Songs = Backbone.Collection.extend({
   },
   parse: function(data) {
     return data.results;
+  },
+
+  search: function(searchTerm) {
+    let baseUrl = this.url;
+    let params = `?where={"title":{"$regex":"${searchTerm}"}}`;
+    this.url = baseUrl + params;
+    this.fetch();
+    this.url = baseUrl;
   }
 });
